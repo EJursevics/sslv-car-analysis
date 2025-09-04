@@ -1,0 +1,33 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+.env
+.env.*
+# Data, runtime artifacts
+*.sqlite
+*.sqlite3
+*.db
+*.log
+*.pid
+*.tmp
+*.cache
+# OS, editor
+.DS_Store
+Thumbs.db
+.swp
+.idea/
+.vscode/
+# Node/ CRA
+node_modules/
+build/
+dist/
+coverage/
+# Local out puts
+outputs/
+reports/
+figures/
