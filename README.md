@@ -29,6 +29,7 @@ This will fetch data and save it into the SQLite database.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
+```
 
 # set up env
 cp .env.example .env
@@ -42,6 +43,7 @@ flask run
 ```bash
 npm install
 npm start
+```
 
 ## Demo data
 For convenience, the SQLite DB already has a snapshot of listings in a specific date in time a bit back in time so you don’t have to scrape to try it.
