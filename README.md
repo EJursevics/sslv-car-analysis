@@ -1,4 +1,4 @@
-# Latvian Car Market Analysis (ss.lv)
+# AutoIndex - Latvian Car Market Analysis (ss.lv)
 
 This is a prototype project I built around the Latvian used car market.  
 The idea: car hunting on ss.lv is tedious, and it’s hard to compare prices across brands, years, and regions. So I made a scraper + analysis pipeline to explore what insights could be pulled out from that limited data.
