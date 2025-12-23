@@ -1,59 +1,44 @@
-# AutoIndex - Latvian Car Market Analysis (ss.lv)
+# AutoIndex, Car Marketplace Analysis Tool
 
-This is a prototype project I built around the Latvian used car market.  
-The idea: car hunting on ss.lv is tedious, and it’s hard to compare prices across brands, years, and regions. So I made a scraper + analysis pipeline to explore what insights could be pulled out from that limited data.
+This is a prototype I built around online car marketplace data. Browsing listings is fine if you want one car, but comparing across brands, years, and regions gets painful fast, so this project was my attempt to make that experience less dumb.
 
 ## What it does
-- Scrapes live listings from **ss.lv** (or you can use the sample DB included which I recommend as it runs)
-- Cleans and stores the data in SQLite
-- Provides a small **Flask API** + **React UI** to browse and compare cars
-- Generates analysis charts for:
+- Scrapes live listings (sample DB included so it runs without scraping)
+- Cleans and stores everything in SQLite
+- Exposes a small Flask API + simple React UI
+- Adds charts for things like:
   - average price by brand
-  - depreciation vs model year
-  - regional differences in median price
+  - price vs model year
+  - regional price differences
 
 ## Tech stack
 - **Backend**: Python (Flask, SQLAlchemy, pandas, BeautifulSoup)
 - **Storage**: SQLite
 - **Frontend**: React + Chart.js
-- **Viz for README**: matplotlib (PNG charts)
+- **Extra visuals**: matplotlib
 
 ## How to run
 
-### 1. Scraper (simplest entry point)
-If you just want to grab some listings and see raw data(and ss.lv hasnt changed their html :D):
+### 1. Scraper (simplest)
+If you just want to grab some listings and see raw data (and the site hasn’t changed its HTML):
 python ss_scraper.py
-This will fetch data and save it into the SQLite database.
+This fetches data and stores it into SQLite.
 
 ## 2. Backend API
-```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-```
-
-# set up env
 cp .env.example .env
-# edit if needed (JWT_SECRET, CAR_PRICE_DB_URL, etc.)
-
-# run API
+(edit if needed)
 export FLASK_APP=api.py
 flask run
 
 ## 3. Frontend
-```bash
 npm install
 npm start
-```
 
 ## Demo data
-For convenience, the SQLite DB already has a snapshot of listings in a specific date in time a bit back in time so you don’t have to scrape to try it.
+DB already includes a snapshot so you don’t have to scrape to try it.
 
-## Example API routes
-- `POST /api/search` → filter by brand/year/fuel  
-- `GET /api/regions` → list all supported regions  
-- `GET /api/region-stats` → median prices by region  
-- `GET /api/charts/price-trend?brand=BMW&model=3%20Series`  
-- `GET /api/charts/price-distribution`
 
 ## Screenshots
 - **Listings**  
@@ -69,7 +54,6 @@ For convenience, the SQLite DB already has a snapshot of listings in a specific 
   ![Price by region](public/readme-assets/Analysis.png)
 
 ## Limitations
-- Only tested on a subset of brands at this time, as It was my first 'big' project for me and It already took a long time, plus was a school,free time project. Wanted to try scraping without outright overloading the website,
-- Scraper depends on ss.lv markup (fragile if they change HTML)  
-- Deduplication/model cleanup is basic  
-- Next steps would be: broaden brand coverage, add retries, improve schema with migrations, and explore popularity trends over time
+– Only tested on a subset of brands, it was a first “big” project
+– Scraper breaks if the site changes markup
+– Cleanup / dedupe is basic
